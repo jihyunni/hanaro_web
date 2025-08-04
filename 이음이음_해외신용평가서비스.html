@@ -1,0 +1,700 @@
+  <style>
+    <style>
+   
+    /* ✅ 공백/여백 제거 핵심 */
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+
+    .notion-header,
+    .notion-title,
+    .notion-topbar {
+      display: none !important;
+    }
+
+    div.notion-page-content.width.padding {
+      padding: 0 !important;
+      margin-top: 0 !important;
+    }
+
+    /* 추가 보완 선택자 */
+    div[class*="notion-page-content"][class*="padding"] {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      margin-top: 0 !important;
+    }
+
+    .notion-frame {
+      padding-top: 0 !important;
+      margin-top: 0 !important;
+    }
+
+    /* 👇 기존 스타일 유지 */
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f9fafb;
+      color: #1f2937;
+    }
+
+    .top-section {
+      background: linear-gradient(to bottom, #3b82f6, #ffffff);
+      padding: 60px 20px 40px;
+      text-align: center;
+    }
+
+    .top-section h1 {
+      font-size: 30px;
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .top-section h1 span {
+      color: #f8fd68;
+    }
+
+    .top-section p {
+      font-size: 20px;
+      margin: 12px 0;
+      color: white;
+    }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background-color: #ecfdf5;
+      color: #059669;
+      padding: 6px 12px;
+      border-radius: 9999px;
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      background-color: #3b82f6;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    .section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .highlight {
+      color: #dc2626;
+      font-weight: bold;
+    }
+
+    .card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+
+    .card-box {
+      background-color: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 32px 24px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: #e0f2fe;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #3b82f6;
+    }
+
+    .card-title {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .card-sub {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+
+    .card-note {
+      font-size: 13px;
+      color: #10b981;
+    }
+
+    .review {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      margin-bottom: 16px;
+    }
+
+    .avatar {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar.blue {
+      background-color: #3b82f6;
+    }
+
+    .avatar.green {
+      background-color: #10b981;
+    }
+
+    .review-content {
+      flex: 1;
+    }
+
+    .review-name {
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .review-stars {
+      float: right;
+      color: #facc15;
+    }
+
+    .review-quote {
+      font-style: italic;
+      margin-top: 4px;
+      color: #374151;
+    }
+
+    .footer-badges {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 24px;
+    }
+
+    .footer-badges p {
+      margin: 6px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      color: #6b7280;
+    }
+
+    .footer {
+      background-color: #111827;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .footer input {
+      padding: 10px;
+      width: 250px;
+      border-radius: 6px;
+      border: none;
+      margin-top: 20px;
+    }
+
+    .footer button {
+      padding: 10px 20px;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      margin-left: 10px;
+      margin-top: 20px;
+    }
+    .footer input[type="email"]::placeholder {
+        color: #6b7280;
+      }
+
+    #langSelector {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 6px;
+      z-index: 9999;
+      border-radius: 6px;
+    }
+  </style>
+  <!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>해외 신용 연계 대출</title>
+</head>
+<body>
+
+  <!-- 언어 선택 -->
+  <select id="langSelector" onchange="changeLanguage(this.value)">
+    <option value="ko">🇰🇷 한국어</option>
+    <option value="en">🇺🇸 English</option>
+    <option value="vi">🇻🇳 Tiếng Việt</option>
+    <option value="si">🇱🇰 සිංහල</option>
+    <option value="th">🇹🇭 ภาษาไทย</option>
+  </select>
+
+     <div class="top-section">
+    <h1 data-i18n="headline">자국 신용등급이 있는데,<br><span>왜 한국에서는 대출이 안 될까요?</span></h1>
+    <p data-i18n="subheadline">이제 네팔, 필리핀에서 쌓은 신용이력으로<br>한국에서도 대출받으세요</p>
+    <div class="badges">
+      <div class="badge" data-i18n="badge1">✅ 한국 생활 1년차부터 가능</div>
+      <div class="badge" data-i18n="badge2">✅ 외국인등록번호 있으면 OK</div>
+    </div>
+    <button class="btn-primary" type="button" onclick="document.querySelector('.footer').scrollIntoView({behavior:'smooth'});">Check it out now</button>
+  </div>
+  </div>
+
+<div class="section">
+  <h2 data-i18n="exp_headline" style="text-align:center; font-size:20px; margin-bottom:20px;">이런 경험, 혹시 있으셨나요?</h2>
+  <p data-i18n="exp_stat" style="text-align:center; color:#6b7280;">국내 장기체류 외국인 중 <span class="highlight">78%</span>가 금융 접근성 문제를 경험합니다</p>
+
+  <div class="card" data-i18n="card1">💔 <strong>"본국에서는 신용등급 A였는데..."</strong><br>네팔에서 5년간 은행 거래, 카드 사용했지만 한국에서는 '무신용자' 취급</div>
+  <div class="card" data-i18n="card2">⛔ <strong>"은행마다 똑같은 답변"</strong><br>“채무기한이 짧아서요”, “신용이력이 없어서요” - 어디든 카드 대출 거절</div>
+  <div class="card" data-i18n="card3">😔 <strong>"억울하지만 어쩔 수 없이..."</strong><br>높은 이자 사채나 지인 돈으로만 의존하는 현실</div>
+
+  <h2 data-i18n="section2_head" style="text-align:center; font-size:26px; font-weight:bold; margin-top:60px;">이제 당신의 진짜 신용을 인정받으세요</h2>
+  <p data-i18n="section2_sub" style="text-align:center; color:#6b7280; margin-bottom:40px;">본국에서 쌓은 신용, 이제 한국에서도 인정받을 시간입니다</p>
+
+  <div class="card-box">
+    <div class="card-icon">🌐</div>
+    <div class="card-title" data-i18n="box1_title">해외 신용정보 자동 연동</div>
+    <div class="card-sub" data-i18n="box1_sub">네팔 CIB, 필리핀 중앙은행 등 주요국 신용정보 API 연결</div>
+    <div class="card-note" data-i18n="box1_note">본국 신용등급을 한국 금융기관이 직접 확인</div>
+  </div>
+
+  <div class="card-box">
+    <div class="card-icon" style="background-color:#d1fae5; color:#10b981;">⚡</div>
+    <div class="card-title" data-i18n="box2_title">3분 간단 적격심사</div>
+    <div class="card-sub" data-i18n="box2_sub">외국인등록증 + 자국 신용정보만으로 대출 가능 여부 즉시 확인</div>
+    <div class="card-note" data-i18n="box2_note">복잡한 서류 없이 모바일에서 간편하게</div>
+  </div>
+
+  <div class="card-box">
+    <div class="card-icon" style="background-color:#ede9fe; color:#8b5cf6;">💬</div>
+    <div class="card-title" data-i18n="box3_title">모국어 지원 서비스</div>
+    <div class="card-sub" data-i18n="box3_sub">네팔어, 영어, 타갈로그어 등 다국어 완벽 지원</div>
+    <div class="card-note" data-i18n="box3_note" style="color:#6366f1;">언어 걱정 없이 편안하게 신청</div>
+  </div>
+
+  <h2 data-i18n="review_head" style="text-align:center; font-size:26px; font-weight:bold; margin-top:60px;">실제 이용 고객들의 이야기</h2>
+
+  <div class="review">
+    <div class="avatar blue">L</div>
+    <div class="review-content">
+      <div class="review-name" data-i18n="review1_name">락스미 T. <span class="review-stars">★★★★★</span></div>
+      <div style="font-size:14px; color:#6b7280;" data-i18n="review1_job">네팔, 요양보호사</div>
+      <div class="review-quote" data-i18n="review1_quote">“네팔에서 5년간 은행 거래했던 기록으로 한국에서도 대출받을 수 있어서 정말 감사해요. 이제 억울하지 않아요!”</div>
+    </div>
+  </div>
+
+  <div class="review">
+    <div class="avatar green">M</div>
+    <div class="review-content">
+      <div class="review-name" data-i18n="review2_name">마리아 S. <span class="review-stars">★★★★★</span></div>
+      <div style="font-size:14px; color:#6b7280;" data-i18n="review2_job">필리핀, 간병인</div>
+      <div class="review-quote" data-i18n="review2_quote">“타갈로그어로 신청할 수 있어서 이해하기 쉬웠어요. 3분 만에 승인 가능 여부를 알 수 있어서 놀랐습니다.”</div>
+    </div>
+  </div>
+
+  <div class="footer-badges">
+    <p data-i18n="footer_badge1">🛡️ 금융감독원 인가 신용협동조합 연계</p>
+    <p data-i18n="footer_badge2">✅ 개인정보보호 완벽 준수</p>
+    <p data-i18n="footer_badge3">🚩 해외 5개국 신용정보 연동 완료</p>
+  </div>
+</div>
+
+  <div class="footer">
+    <h2 data-i18n="footer_cta">더 이상 기다리지 마세요.<br>지금 바로 확인해보세요!</h2>
+    <p data-i18n="footer_note">📢 블태 테스트 참여자 선착순 500명 목적 중</p>
+    <p>현재 신청자: <strong style="color:#60a5fa;">497명</strong></p>
+
+    <form id="emailForm" onsubmit="handleEmail(event)" style="display:flex; justify-content:center; flex-wrap:wrap; gap:10px;">
+      <input type="email" id="emailInput" placeholder="이메일 주소를 입력하세요" required />
+      <button type="submit" data-i18n="check_button">무료 확인하기</button>
+    </form>
+
+    <p id="successMsg" style="display:none; font-size:14px; color:#10b981; margin-top:12px;" data-i18n="success_msg">
+      ✅ 신청이 완료되었습니다! 해당 메일로 연락드리겠습니다.
+    </p>
+    
+  <!-- ✅ 다국어 하단 안내 영역 - 다크 스타일 적용 -->
+<div class="footer" style="margin-top: 80px; padding: 20px; text-align: center; font-family: 'Noto Sans KR', sans-serif; background-color: #0f172a; color: #f9fafb;">
+
+  <p data-i18n="footer_info1" style="font-size:13px; margin-top:14px;">
+    ✅ 신청 무료 / 부담 없는 확인    ✅ 개인정보 안전 보호   ✅ 언어 걱정 NO | 모국어 지원
+  </p>
+
+  <hr style="border:0; border-top:1px solid #444; margin:30px 0;">
+
+  <p data-i18n="footer_info2" style="font-size:18px;">
+    해외 신용 연계 대출
+  </p>
+  <p data-i18n="footer_info3" style="font-size:14px;">
+    자국 신용이력으로 한국에서도 공정한 대출 기회를
+  </p><br>
+
+  <p data-i18n="footer_contact1" style="font-size:18px;">
+    서비스 문의
+  </p>
+  <p data-i18n="footer_contact2" style="font-size:14px;">
+    📩 1woong@naver.com
+  </p>
+  <p data-i18n="footer_contact3" style="font-size:14px;">
+    📞 다국어 상담 가능
+  </p>
+  <p data-i18n="footer_contact4" style="font-size:14px;">
+    🌐 네팔어, 영어, 스리랑카어 등 지원
+  </p><br>
+
+  <p data-i18n="footer_partner1" style="font-size:18px;">
+    파트너
+  </p>
+  <p data-i18n="footer_partner2" style="font-size:14px;">
+    한국 신용협동조합 · 이음이음팀
+  </p>
+  <p data-i18n="footer_partner3" style="font-size:14px;">
+    금융감독원 인가
+  </p>
+
+  <p data-i18n="footer_policy" style="font-size:14px; color:#60a5fa; margin-top: 16px;">
+    개인정보처리방침
+  </p>
+</div>
+
+
+      <script>
+      function handleEmail(event) {
+        event.preventDefault();
+        const input = document.getElementById('emailInput');
+        const success = document.getElementById('successMsg');
+
+        if (input && success && input.value.trim() !== '') {
+          success.style.display = 'block';
+          input.value = '';
+        }
+      }
+    </script>
+    </div>
+  </div>
+
+  <!-- 스크립트 -->
+  <script>
+    const translations = {
+      ko: {
+        headline: "자국 신용등급이 있는데,<br><span>왜 한국에서는 대출이 안 될까요?</span>",
+        subheadline: "이제 네팔, 필리핀에서 쌓은 신용이력으로<br>한국에서도 대출받으세요",
+        badge1: "✅ 한국 생활 1년차부터 가능",
+        badge2: "✅ 외국인등록번호 있으면 OK",
+ 
+        footer_cta: "더 이상 기다리지 마세요.<br>지금 바로 확인해보세요!",
+        footer_note: "📢 블태 테스트 참여자 선착순 500명 목적 중",
+        check_button: "무료 확인하기",
+        success_msg: "✅ 신청이 완료되었습니다! 해당 메일로 연락드리겠습니다.",
+        
+        exp_headline: "이런 경험, 혹시 있으셨나요?",
+        exp_stat: "국내 장기체류 외국인 중 <span class='highlight'>78%</span>가 금융 접근성 문제를 경험합니다",
+        card1: "💔 <strong>\"본국에서는 신용등급 A였는데...\"</strong><br>네팔에서 5년간 은행 거래, 카드 사용했지만 한국에서는 '무신용자' 취급",
+        card2: "⛔ <strong>\"은행마다 똑같은 답변\"</strong><br>“채무기한이 짧아서요”, “신용이력이 없어서요” - 어디든 카드 대출 거절",
+        card3: "😔 <strong>\"억울하지만 어쩔 수 없이...\"</strong><br>높은 이자 사채나 지인 돈으로만 의존하는 현실",
+        section2_head: "이제 당신의 진짜 신용을 인정받으세요",
+        section2_sub: "본국에서 쌓은 신용, 이제 한국에서도 인정받을 시간입니다",
+        box1_title: "해외 신용정보 자동 연동",
+        box1_sub: "네팔 CIB, 필리핀 중앙은행 등 주요국 신용정보 API 연결",
+        box1_note: "본국 신용등급을 한국 금융기관이 직접 확인",
+        box2_title: "3분 간단 적격심사",
+        box2_sub: "외국인등록증 + 자국 신용정보만으로 대출 가능 여부 즉시 확인",
+        box2_note: "복잡한 서류 없이 모바일에서 간편하게",
+        box3_title: "모국어 지원 서비스",
+        box3_sub: "네팔어, 영어, 타갈로그어 등 다국어 완벽 지원",
+        box3_note: "언어 걱정 없이 편안하게 신청",
+        review_head: "실제 이용 고객들의 이야기",
+        review1_name: "락스미 T. <span class='review-stars'>★★★★★</span>",
+        review1_job: "네팔, 요양보호사",
+        review1_quote: "“네팔에서 5년간 은행 거래했던 기록으로 한국에서도 대출받을 수 있어서 정말 감사해요. 이제 억울하지 않아요!”",
+        review2_name: "마리아 S. <span class='review-stars'>★★★★★</span>",
+        review2_job: "필리핀, 간병인",
+        review2_quote: "“타갈로그어로 신청할 수 있어서 이해하기 쉬웠어요. 3분 만에 승인 가능 여부를 알 수 있어서 놀랐습니다.”",
+        footer_badge1: "🛡️ 금융감독원 인가 신용협동조합 연계",
+        footer_badge2: "✅ 개인정보보호 완벽 준수",
+        footer_badge3: "🚩 해외 5개국 신용정보 연동 완료",
+        footer_info1: "✅ 신청 무료 / 부담 없는 확인    ✅ 개인정보 안전 보호   ✅ 언어 걱정 NO | 모국어 지원",
+        footer_info2: "해외 신용 연계 대출",
+        footer_info3: "자국 신용이력으로 한국에서도 공정한 대출 기회를",
+        footer_contact1: "서비스 문의",
+        footer_contact2: "📩 1woong@naver.com",
+        footer_contact3: "📞 다국어 상담 가능",
+        footer_contact4: "🌐 네팔어, 영어, 스리랑카어 등 지원",
+        footer_partner1: "파트너",
+        footer_partner2: "한국 신용협동조합 · 이음이음팀",
+        footer_partner3: "금융감독원 인가",
+        footer_policy: "개인정보처리방침"
+
+      },
+      en: {
+        headline: "You have a credit score in your country,<br><span>so why can't you get a loan in Korea?</span>",
+        subheadline: "Now use your credit history from Nepal or the Philippines<br>to get a loan in Korea",
+        badge1: "✅ Available from 1st year in Korea",
+        badge2: "✅ Just need your Alien Registration Number",
+        
+        footer_cta: "Don't wait any longer.<br>Check now!",
+        footer_note: "📢 Limited beta test: 500 applicants only",
+        check_button: "Check for Free",
+        success_msg: "✅ Submission successful! We will contact you via email.",
+        
+        exp_headline: "Have you ever had an experience like this?",
+        exp_stat: "<span class='highlight'>78%</span> of long-term foreign residents in Korea face financial accessibility issues",
+        card1: "💔 <strong>\"I was rated A in my home country...\"</strong><br>Used banking and credit cards in Nepal for 5 years, but treated as 'no credit history' in Korea",
+        card2: "⛔ <strong>\"Same answer from every bank\"</strong><br>“The repayment period is too short”, “You have no credit history” — loan rejected everywhere",
+        card3: "😔 <strong>\"Frustrated but no choice...\"</strong><br>Forced to rely on high-interest private loans or friends",
+        section2_head: "It's time your real credit gets recognized",
+        section2_sub: "Let the credit you've built abroad work for you in Korea",
+        box1_title: "Automatic Link to Overseas Credit Info",
+        box1_sub: "Connected with major APIs like Nepal CIB, Central Bank of the Philippines",
+        box1_note: "Korean financial institutions can verify your home country credit directly",
+        box2_title: "Simple 3-Minute Eligibility Check",
+        box2_sub: "Use your foreign registration card and home credit info to get instant results",
+        box2_note: "No paperwork — easy mobile process",
+        box3_title: "Multilingual Support Service",
+        box3_sub: "Full support in Nepali, English, Tagalog and more",
+        box3_note: "Apply comfortably without language worries",
+        review_head: "Real Stories from Our Users",
+        review1_name: "Laxmi T. <span class='review-stars'>★★★★★</span>",
+        review1_job: "Nepal, Caregiver",
+        review1_quote: "“I’m so thankful that my banking history in Nepal helped me get a loan in Korea. I finally feel seen!”",
+        review2_name: "Maria S. <span class='review-stars'>★★★★★</span>",
+        review2_job: "Philippines, Caregiver",
+        review2_quote: "“It was easy to apply in Tagalog, and I was surprised I could check my eligibility in just 3 minutes.”",
+        footer_badge1: "🛡️ Approved by Financial Supervisory Service Cooperative",
+        footer_badge2: "✅ Fully compliant with personal data protection",
+        footer_badge3: "🚩 Integrated with credit bureaus in 5 countries",
+        footer_info1: "✅ Free application / No obligation   ✅ Safe personal data   ✅ No language barriers | Native language supported",
+        footer_info2: "Overseas Credit-Linked Loan",
+        footer_info3: "Fair loan opportunities in Korea with your home country credit history",
+        footer_contact1: "Contact Us",
+        footer_contact2: "📩 1woong@naver.com",
+        footer_contact3: "📞 Multilingual consultation available",
+        footer_contact4: "🌐 Nepali, English, Sinhala, and more supported",
+        footer_partner1: "Partners",
+        footer_partner2: "Korea Credit Union · Ieum Ieum Team",
+        footer_partner3: "Approved by Financial Supervisory Service",
+        footer_policy: "Privacy Policy"
+
+      },
+      vi: {
+        headline: "Bạn có điểm tín dụng ở quê nhà,<br><span>tại sao lại không vay được ở Hàn Quốc?</span>",
+        subheadline: "Hãy dùng lịch sử tín dụng ở Nepal hoặc Philippines<br>để vay tiền tại Hàn Quốc",
+        badge1: "✅ Có thể dùng từ năm đầu tiên ở Hàn",
+        badge2: "✅ Chỉ cần số đăng ký người nước ngoài",
+        
+        footer_cta: "Đừng chần chừ nữa!<br>Hãy kiểm tra ngay bây giờ!",
+        footer_note: "📢 Giới hạn chỉ 500 người tham gia thử nghiệm",
+        check_button: "Kiểm tra miễn phí",
+        success_msg: "✅ Đăng ký thành công! Chúng tôi sẽ liên hệ qua email.",
+        
+        exp_headline: "Bạn đã từng gặp trường hợp như thế này chưa?",
+        exp_stat: "<span class='highlight'>78%</span> người nước ngoài lưu trú dài hạn tại Hàn gặp khó khăn tiếp cận tài chính",
+        card1: "💔 <strong>\"Ở nước tôi, tôi có điểm tín dụng A...\"</strong><br>Dùng ngân hàng và thẻ tín dụng 5 năm tại Nepal, nhưng bị xem là 'không có tín dụng' ở Hàn",
+        card2: "⛔ <strong>\"Ngân hàng nào cũng trả lời giống nhau\"</strong><br>“Thời hạn trả nợ ngắn”, “Không có lịch sử tín dụng” — đều bị từ chối vay",
+        card3: "😔 <strong>\"Bất công nhưng không còn cách nào...\"</strong><br>Phải vay nóng hoặc mượn tiền người quen",
+        section2_head: "Hãy để tín dụng thực sự của bạn được công nhận",
+        section2_sub: "Tín dụng bạn đã xây dựng ở quê nhà, giờ được công nhận tại Hàn Quốc",
+        box1_title: "Kết nối tự động thông tin tín dụng nước ngoài",
+        box1_sub: "Liên kết API với CIB Nepal, Ngân hàng Trung ương Philippines và các nước chính",
+        box1_note: "Ngân hàng Hàn Quốc kiểm tra tín dụng trực tiếp",
+        box2_title: "Xét duyệt đơn giản trong 3 phút",
+        box2_sub: "Chỉ cần thẻ cư trú và thông tin tín dụng quê nhà để kiểm tra vay",
+        box2_note: "Không cần hồ sơ phức tạp, thao tác dễ dàng trên điện thoại",
+        box3_title: "Hỗ trợ ngôn ngữ mẹ đẻ",
+        box3_sub: "Hỗ trợ hoàn toàn bằng tiếng Nepali, tiếng Anh, tiếng Tagalog,...",
+        box3_note: "Không lo ngôn ngữ, nộp đơn thật dễ dàng",
+        review_head: "Chia sẻ từ khách hàng thực tế",
+        review1_name: "Laxmi T. <span class='review-stars'>★★★★★</span>",
+        review1_job: "Nepal, Nhân viên chăm sóc",
+        review1_quote: "“Nhờ lịch sử giao dịch ngân hàng ở Nepal, tôi đã được vay ở Hàn Quốc. Thật biết ơn!”",
+        review2_name: "Maria S. <span class='review-stars'>★★★★★</span>",
+        review2_job: "Philippines, Nhân viên chăm sóc",
+        review2_quote: "“Tôi có thể đăng ký bằng tiếng Tagalog, rất dễ hiểu và chỉ mất 3 phút để biết kết quả.”",
+        footer_badge1: "🛡️ Liên kết hợp tác xã tín dụng được cơ quan tài chính Hàn phê duyệt",
+        footer_badge2: "✅ Tuân thủ đầy đủ về bảo mật thông tin cá nhân",
+        footer_badge3: "🚩 Đã kết nối với cơ quan tín dụng ở 5 quốc gia",
+        footer_info1: "✅ Đăng ký miễn phí / Không ràng buộc   ✅ Bảo mật thông tin cá nhân   ✅ Không lo ngôn ngữ | Hỗ trợ tiếng mẹ đẻ",
+        footer_info2: "Vay tiền liên kết tín dụng nước ngoài",
+        footer_info3: "Cơ hội vay công bằng tại Hàn Quốc bằng lịch sử tín dụng quê nhà",
+        footer_contact1: "Liên hệ dịch vụ",
+        footer_contact2: "📩 1woong@naver.com",
+        footer_contact3: "📞 Tư vấn đa ngôn ngữ",
+        footer_contact4: "🌐 Hỗ trợ tiếng Nepali, tiếng Anh, tiếng Sinhala,...",
+        footer_partner1: "Đối tác",
+        footer_partner2: "Liên minh Tín dụng Hàn Quốc · Đội IeumIeum",
+        footer_partner3: "Được cơ quan tài chính Hàn Quốc phê duyệt",
+        footer_policy: "Chính sách bảo mật thông tin"
+
+      },
+      si: {
+        headline: "ඔබේ රටේ ණය ශ්‍රේණියක් තිබුණද,<br><span>කොරියාවේදී ණයක් ගැනීම ඇයි අසීරු?</span>",
+        subheadline: "දැනට නේපාලය හෝ පිලිපීනයේ ඇති ණය ඉතිහාසය<br>කොරියාවේද භාවිතා කරන්න",
+        badge1: "✅ කොරියාවේ පළමු වසරේ සිටම සක්‍රීයයි",
+        badge2: "✅ විදේශික ලියාපදිංචි අංකය අවශ්‍යයි",
+        
+        footer_cta: "තවත් පිළිවෙලක් බලන්න එපා!<br>දැන්ම පරීක්ෂා කරන්න",
+        footer_note: "📢 පළමු අයදුම්කරුවන් 500කට පමණක් සීමා වේ",
+        check_button: "නොමිලේ පරීක්ෂා කරන්න",
+        success_msg: "✅ ඔබේ අයදුම්පත සාර්ථකයි! අපි ඔබව විද්‍යුත් තැපෑලෙන් සම්බන්ධ කරමු.",
+        
+        exp_headline: "ඔබට මෙවැනි අත්දැකීමක් තිබුණාද?",
+        exp_stat: "කොරියාවේ දිගුකාලීන විදේශිකයින්ගෙන් <span class='highlight'>78%</span>ක් මූල්‍ය පහසුවට පිවිසීමේ ගැටළු හමුවේ",
+        card1: "💔 <strong>\"මගේ රටේදී මට A ශ්‍රේණියක් තිබුණා...\"</strong><br>නේපාලයේ වසර 5ක් බැංකු ගණුදෙනු කළද, කොරියාවේදී 'ණය ඉතිහාසයක් නැත' ලෙස සැලකේ",
+        card2: "⛔ <strong>\"සියලුම බැංකු එකම පිළිතුරක් දෙයි\"</strong><br>“ගෙවීම් කාලය ඉතා කෙටියි”, “ණය ඉතිහාසය නැහැ” — ණය ප්‍රතික්ෂේප වේ",
+        card3: "😔 <strong>\"අසාධාරණයි, නමුත් වෙන විකල්පයක් නෑ...\"</strong><br>ඉහළ පොලී සහිත පුද්ගලික ණය හෝ මිතුරන්ගෙන් පමණක් වාසි ගත හැකියි",
+        section2_head: "ඔබේ සැබෑණය දැන් පිළිගැනේ",
+        section2_sub: "ඔබේ රටේදී පවත්වාගත්ණය කොරියාවේද පිළිගැනේ",
+        box1_title: "විදේශීයණය තොරතුරු ස්වයංක්‍රීය සම්බන්ධතාවය",
+        box1_sub: "නේපාල CIB, ෆිලිපීන් මධ්‍යම බැංකුව ආදී රටවල් සමඟ API සම්බන්ධතාවය",
+        box1_note: "ඔබේ රටේ ශ්‍රේණිය කොරියාවේ බැංකු මඟින් සෘජුවම පරික්ෂා කෙරේ",
+        box2_title: "මිනිත්තු 3කදී සුදුසුකම් පරීක්ෂාව",
+        box2_sub: "විදේශික ලියාපදිංචි කාඩ්පත සහ රටේණය තොරතුරු මත පදනම්ව ණය සුදුසුකම පරීක්ෂා කළ හැක",
+        box2_note: "සිටවන් ලේසියෙන් ජංගමයෙන් සම්පූර්ණ කළ හැක",
+        box3_title: "මව්බස සහාය සේවාව",
+        box3_sub: "නේපාල, ඉංග්‍රීසි, ටගාලොග් ඇතුළු බහුභාෂා සහාය",
+        box3_note: "භාෂා ගැටළු නොමැතිව පහසුවෙන් ඉදිරිපත් කරන්න",
+        review_head: "සැබෑ පාරිභෝගික අත්දැකීම්",
+        review1_name: "ලක්ස්මි T. <span class='review-stars'>★★★★★</span>",
+        review1_job: "නේපාලය, සත්කාරිකාව",
+        review1_quote: "“නේපාලයේ බැංකු වාර්තා මට කොරියාවේ ණය ලබා ගැනීමට උපකාරී වුණා. දැන් මට සතුටුයි!”",
+        review2_name: "මරියා S. <span class='review-stars'>★★★★★</span>",
+        review2_job: "ෆිලිපීන්, සත්කාරිකාව",
+        review2_quote: "“මට ටගාලොග් භාෂාවෙන් ඉදිරිපත් කළ හැකි වීම හොඳයි. මිනිත්තු 3කින්ම ප්‍රතිඵල ලැබුණා!”",
+        footer_badge1: "🛡️ මුල්‍ය අධීක්ෂණ ආයතනය අනුමත කළ ණය සංගමය සමඟ සම්බන්ධයි",
+        footer_badge2: "✅ පුද්ගලික දත්ත ආරක්ෂණ නීති කඩිනම්ව පිළිපදියි",
+        footer_badge3: "🚩 රටවල් 5ක ශ්‍රේණි තොරතුරු සම්බන්ධතාවය සම්පූර්ණයි",
+        footer_info1: "✅ නොමිලේ අයදුම් / බද්ධතාවයක් නැත   ✅ පෞද්ගලික දත්ත ආරක්ෂිතයි   ✅ භාෂා ගැටළු නැත | මව්බස සහාය",
+        footer_info2: "විදේශීයණය සම්බන්ධ ණය සේවාව",
+        footer_info3: "ඔබේ රටේණය ඉතිහාසය කොරියාවේද භාවිතා කරන්න",
+        footer_contact1: "සේවා විමසීම්",
+        footer_contact2: "📩 1woong@naver.com",
+        footer_contact3: "📞 බහුභාෂා උපදේශනය සූදානම්",
+        footer_contact4: "🌐 නේපාල, ඉංග්‍රීසි, සිංහල සහ තවත් බසින් සහය",
+        footer_partner1: "හවුල්කරුවන්",
+        footer_partner2: "දකුණු කොරියාවේ ණය සංගමය · Ieum Ieum කණ්ඩායම",
+        footer_partner3: "මුල්‍ය අධීක්ෂණ ආයතනයෙන් අනුමතයි",
+        footer_policy: "පෞද්ගලිකත්ව ප්‍රතිපත්තිය"
+
+      },
+      th: {
+        headline: "คุณมีคะแนนเครดิตในประเทศของคุณ<br><span>แล้วทำไมถึงกู้เงินในเกาหลีไม่ได้?</span>",
+        subheadline: "ตอนนี้คุณสามารถใช้ประวัติเครดิตจากเนปาลหรือฟิลิปปินส์<br>เพื่อขอกู้ในเกาหลีได้แล้ว",
+        badge1: "✅ เริ่มใช้ได้ตั้งแต่ปีแรกในเกาหลี",
+        badge2: "✅ แค่มีเลขประจำตัวคนต่างชาติ",
+        
+        footer_cta: "อย่ารอช้า<br>ตรวจสอบได้เลย!",
+        footer_note: "📢 จำกัดผู้เข้าร่วมทดสอบ 500 คนเท่านั้น",
+        check_button: "ตรวจสอบฟรี",
+        success_msg: "✅ ส่งข้อมูลสำเร็จ! เราจะติดต่อทางอีเมล",
+        
+        exp_headline: "คุณเคยเจอประสบการณ์แบบนี้ไหม?",
+        exp_stat: "<span class='highlight'>78%</span> ของชาวต่างชาติที่พำนักระยะยาวในเกาหลี ประสบปัญหาการเข้าถึงทางการเงิน",
+        card1: "💔 <strong>\"ที่บ้านเกิดฉันมีเครดิตเกรด A...\"</strong><br>ใช้บริการธนาคาร 5 ปีในเนปาล แต่ถูกมองว่า ‘ไม่มีเครดิต’ ในเกาหลี",
+        card2: "⛔ <strong>\"ทุกธนาคารก็ตอบเหมือนกัน\"</strong><br>“ระยะเวลาชำระคืนสั้น”, “ไม่มีประวัติเครดิต” — ถูกปฏิเสธเงินกู้ทั้งหมด",
+        card3: "😔 <strong>\"ไม่ยุติธรรม แต่ไม่มีทางเลือก...\"</strong><br>ต้องพึ่งเงินกู้ดอกเบี้ยสูงหรือยืมเงินจากคนรู้จัก",
+        section2_head: "ถึงเวลาที่เครดิตจริงของคุณจะได้รับการยอมรับ",
+        section2_sub: "ให้เครดิตจากประเทศของคุณได้รับการยอมรับในเกาหลี",
+        box1_title: "เชื่อมต่อข้อมูลเครดิตต่างประเทศอัตโนมัติ",
+        box1_sub: "เชื่อมต่อ API กับ CIB เนปาล, ธนาคารกลางฟิลิปปินส์ ฯลฯ",
+        box1_note: "สถาบันการเงินเกาหลีสามารถตรวจสอบเครดิตโดยตรงจากประเทศต้นทาง",
+        box2_title: "ตรวจสอบคุณสมบัติง่ายใน 3 นาที",
+        box2_sub: "ใช้บัตรลงทะเบียนคนต่างชาติ + ข้อมูลเครดิตประเทศต้นทาง เพื่อตรวจสอบทันที",
+        box2_note: "ไม่ต้องใช้เอกสารยุ่งยาก ทำง่ายผ่านมือถือ",
+        box3_title: "บริการรองรับหลายภาษา",
+        box3_sub: "รองรับภาษาเนปาล อังกฤษ ตากาล็อก และอื่นๆ",
+        box3_note: "สมัครง่าย ไม่ต้องกังวลเรื่องภาษา",
+        review_head: "เรื่องจริงจากผู้ใช้งาน",
+        review1_name: "ลักษมี T. <span class='review-stars'>★★★★★</span>",
+        review1_job: "เนปาล, ผู้ดูแลผู้ป่วย",
+        review1_quote: "“ขอบคุณที่ประวัติธนาคารของฉันในเนปาลช่วยให้ฉันกู้เงินในเกาหลีได้ ฉันรู้สึกได้รับการยอมรับจริงๆ!”",
+        review2_name: "มาเรีย S. <span class='review-stars'>★★★★★</span>",
+        review2_job: "ฟิลิปปินส์, ผู้ดูแลผู้ป่วย",
+        review2_quote: "“สมัครเป็นภาษาตากาล็อกได้ง่ายมาก แถมรู้ผลภายใน 3 นาทีอีกด้วย!”",
+        footer_badge1: "🛡️ เชื่อมโยงกับสหกรณ์เครดิตที่ได้รับอนุมัติจากหน่วยงานกำกับดูแลทางการเงิน",
+        footer_badge2: "✅ ปฏิบัติตามกฎหมายคุ้มครองข้อมูลส่วนบุคคลอย่างเคร่งครัด",
+        footer_badge3: "🚩 เชื่อมโยงข้อมูลเครดิตกับ 5 ประเทศแล้ว",
+        footer_info1: "✅ สมัครฟรี / ไม่มีภาระผูกพัน   ✅ ข้อมูลส่วนตัวปลอดภัย   ✅ ไม่ต้องกังวลเรื่องภาษา | รองรับภาษาท้องถิ่น",
+        footer_info2: "สินเชื่อเชื่อมโยงเครดิตต่างประเทศ",
+        footer_info3: "โอกาสกู้เงินอย่างเป็นธรรมในเกาหลีด้วยประวัติเครดิตจากประเทศของคุณ",
+        footer_contact1: "ติดต่อบริการ",
+        footer_contact2: "📩 1woong@naver.com",
+        footer_contact3: "📞 ให้คำปรึกษาหลายภาษาได้",
+        footer_contact4: "🌐 รองรับภาษาเนปาล อังกฤษ สิงหล และอื่นๆ",
+        footer_partner1: "พันธมิตร",
+        footer_partner2: "สหกรณ์เครดิตเกาหลี · ทีม Ieum Ieum",
+        footer_partner3: "ได้รับอนุมัติจากหน่วยงานกำกับดูแลการเงิน",
+        footer_policy: "นโยบายความเป็นส่วนตัว"
+
+      }
+    };
+
+    function changeLanguage(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+    }
+
+    function handleEmail(event) {
+      event.preventDefault();
+      const input = document.getElementById('emailInput');
+      const success = document.getElementById('successMsg');
+      if (input && success && input.value.trim() !== '') {
+        success.style.display = 'block';
+        input.value = '';
+      }
+    }
+
+    // 기본 언어 설정
+    document.addEventListener("DOMContentLoaded", () => {
+      const userLang = navigator.language.startsWith('ko') ? 'ko' : 'en';
+      document.getElementById('langSelector').value = userLang;
+      changeLanguage(userLang);
+    });
+  </script>
+</body>
+</html>
